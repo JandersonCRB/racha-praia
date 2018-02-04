@@ -1,9 +1,27 @@
-import React from 'react'
+import React from 'react';
 
-const Player = props =>
-	<div className=''>
-		<h2>{props.fullname}</h2>
-		<p>{props.nickname}</p>
-	</div>;
+import { observer } from 'mobx-react';
 
-export default Player;
+import '../Home/Home.css'
+
+@observer(['players'])
+export default class Player extends React.Component {
+	removePlayer = (e) => {
+		e.preventDefault();
+
+		this.props.players.remove(this.props.id)
+	}
+	render() {
+		return (
+			<div className='card'>
+				<h2 className="card-header">{this.props.fullname}</h2>
+				<div className="card-body">
+					<p className="card-text">{this.props.nickname}</p>
+					<button type="button" className="btn btn-primary btn-sm" >Remove</button>
+					<button type="button" className="btn btn-primary btn-sm" >Remove</button>
+				</div>
+			</div>
+		)
+	}
+
+}

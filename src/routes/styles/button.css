@@ -1,0 +1,19 @@
+.btn-primary {
+    background-color: rgb(255, 0, 0);
+    border-color: rgb(255, 0, 0);
+    margin: 2px;
+}
+
+.btn-primary:hover {
+    background: rgb(219, 0, 0);
+    border-color: rgb(219, 0, 0);
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+    background: rgb(219, 0, 0);
+    border-color: rgb(219, 0, 0);
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.671)
+}

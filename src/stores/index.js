@@ -1,7 +1,7 @@
-import contacts from './Contacts'
+import players from './collections/Players'
 
 const stores = {
-    contacts,
+    players,
 };
 
 export default stores;
