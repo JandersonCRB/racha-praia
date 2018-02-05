@@ -19,7 +19,7 @@ export default class Home extends React.Component {
 					<Grid>
 						<Row className="show-grid">
 							{this.props.players.all.slice().map(info => (
-								<Col key={info.id} xs={6} lg={4} md={6} sm={12}>
+								<Col key={info.id} xs={2} lg={4} md={6} sm={12}>
 									<Player {...info} />
 								</Col>
 							))}

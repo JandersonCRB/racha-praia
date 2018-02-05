@@ -1,3 +1,7 @@
 .card {
     margin-bottom: 20px;
 }
+
+.card-player {
+    width: 300px
+}

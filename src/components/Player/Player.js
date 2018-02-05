@@ -13,11 +13,10 @@ export default class Player extends React.Component {
 	}
 	render() {
 		return (
-			<div className='card'>
+			<div className='card card-player'>
 				<h2 className="card-header">{this.props.fullname}</h2>
 				<div className="card-body">
 					<p className="card-text">{this.props.nickname}</p>
-					<button type="button" className="btn btn-primary btn-sm" >Remove</button>
 					<button type="button" className="btn btn-primary btn-sm" >Remove</button>
 				</div>
 			</div>

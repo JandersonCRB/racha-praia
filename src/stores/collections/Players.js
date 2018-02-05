@@ -8,11 +8,12 @@ class Players {
 
     @action async fetchAll(){
         this.isLoading = false;
-        const response = await fetch('http://localhost:8080/v1/players');
+        const response = await Api.get(this.path);
         const status = await response.status;
 
         if(status === 200) {
-            this.all = await response.json();
+            const json = await response.json();
+            this.all = await json.data
         }
     }
 

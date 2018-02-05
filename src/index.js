@@ -4,5 +4,16 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Router, browserHistory } from 'react-router';
+
+import stores from './stores';
+import { Provider } from 'mobx-react';
+
+import routes from './routes';
+
+ReactDOM.render(
+    <Provider players={stores.players}>
+        <Router routes={routes} history={browserHistory} />
+    </Provider>
+    , document.getElementById('root'));
 registerServiceWorker();
