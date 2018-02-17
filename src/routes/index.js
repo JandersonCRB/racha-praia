@@ -23,7 +23,7 @@ const routes =
             {/* <Route path=':playerId' component={Show} /> */}
             <Route path='new' component={NewPlayer} />
         </Route>
-        {/* <Route component={Page404} /> */}
+        <Route path='*' component={Page404} />
     </Route>;
 
 export default routes;

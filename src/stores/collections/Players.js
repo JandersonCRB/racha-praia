@@ -51,7 +51,7 @@ class Players {
 
         if(status === 200) {
             this.isLoading = false;
-            this.fetchAll;
+            this.fetchAll();
         }
 
         const existing = this.all;
