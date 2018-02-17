@@ -1,4 +1,4 @@
-const endpoint = 'https://safe-caverns-23363.herokuapp.com/v1';
+const endpoint = 'localhost:3000/v1';
 
 const headers = () => {
   const h = new Headers();
