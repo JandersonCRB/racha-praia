@@ -18,19 +18,8 @@ class Players {
     }
 
     @action async add(data) {
-        const headers = new Headers();
-        headers.append('Content-Type','application/json');
-
-        const options = {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(data)
-        };
-
-        const request = new Request('http://localhost:8080/v1/players', options);
-        const response = await fetch(request);
+        const response = await Api.post(this.path, data);
         const status = await response.status;
-        console.log(request);
         if(status === 201){
             this.fetchAll();
         }
