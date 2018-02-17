@@ -17,7 +17,7 @@ export default class Player extends React.Component {
 				<h2 className="card-header">{this.props.fullname}</h2>
 				<div className="card-body">
 					<p className="card-text">{this.props.nickname}</p>
-					<button type="button" className="btn btn-primary btn-sm" >Remove</button>
+					<button type="button" className="btn btn-primary btn-sm" onClick={e => this.removePlayer(e)}>Remove</button>
 				</div>
 			</div>
 		)
