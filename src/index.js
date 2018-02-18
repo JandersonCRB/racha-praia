@@ -12,7 +12,7 @@ import { Provider } from 'mobx-react';
 import routes from './routes';
 
 ReactDOM.render(
-    <Provider players={stores.players}>
+    <Provider {...stores}>
         <Router routes={routes} history={browserHistory} />
     </Provider>
     , document.getElementById('root'));

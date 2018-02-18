@@ -1,4 +1,4 @@
-const endpoint = 'localhost:3000/v1';
+const endpoint = 'http://localhost:3000/v1';
 
 const headers = () => {
   const h = new Headers();
