@@ -31,7 +31,7 @@ class MyNavbar extends React.Component {
 						<Button style={{ marginLeft: 'auto' }} color="secondary">Login</Button>
 					</Toolbar>
 				</AppBar>
-				<Drawer open={this.state.drawer}>
+				<Drawer open={this.state.drawer} onClose={() => this.setState({drawer: false})}>
 					<div
 						tabIndex={0}
 						role="button"
