@@ -6,14 +6,34 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { Router, browserHistory } from 'react-router';
 
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import red from 'material-ui/colors/red';
+import grey from 'material-ui/colors/grey';
 import stores from './stores';
 import { Provider } from 'mobx-react';
 
 import routes from './routes';
 
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            light: red[300],
+            main: red[700],
+            dark: red[700],
+        },
+        secondary: {
+            light: grey.A200,
+            main: grey[300],
+            dark: grey.A700,
+        },
+    },
+});
+
 ReactDOM.render(
-    <Provider {...stores}>
-        <Router routes={routes} history={browserHistory} />
-    </Provider>
+    <MuiThemeProvider theme={theme}>
+        <Provider {...stores}>
+            <Router routes={routes} history={browserHistory} />
+        </Provider>
+    </MuiThemeProvider>
     , document.getElementById('root'));
 registerServiceWorker();
