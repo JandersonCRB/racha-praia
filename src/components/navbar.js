@@ -7,7 +7,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Drawer from 'material-ui/Drawer';
 import MenuIcon from 'material-ui-icons/Menu';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import { browserHistory, Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import PersonAddIcon from 'material-ui-icons/PersonAdd';
 
 class MyNavbar extends React.Component {
