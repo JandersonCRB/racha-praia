@@ -1,11 +1,29 @@
 import React from 'react';
 
-import './NewPlayer.css';
+import Paper from 'material-ui/Paper';
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
 
 import { observer } from 'mobx-react';
 
+import './NewPlayer.css';
+
+const styles = {
+		fields:{
+			margin: '10px',
+			marginLeft: 'auto',
+			marginRight: 'auto'
+		}
+}
+
 @observer(['players'])
 export default class NewPlayer extends React.Component {
+	constructor(){
+		super();
+		this.state = {
+			fullname: ''
+		}
+	}
 	addContact = (e) => {
 		e.preventDefault();
 
@@ -17,21 +35,20 @@ export default class NewPlayer extends React.Component {
 		this.refs.fullname.value = null;
 		this.refs.nickname.value = null;
 	}
-
 	render() {
 		return (
 			<div className="container mt-4" >
-				<form onSubmit={this.addContact}>
-					<fieldset>
-						<div className="form-group">
-							<input ref='fullname' type="name" className="form-control" placeholder="Name" />
-						</div>
-						<div className="form-group">
-							<input ref='nickname' type="name" className="form-control" placeholder="Nickname" />
-						</div>
-						<button type="submit" className="btn btn-primary">Submit</button>
-					</fieldset>
-				</form>
+			<div className="text-center">
+			<h1>Adicionar Jogador</h1>
+				<Paper evelation={2} style={{ padding: 10, maxWidth: '278px', marginLeft: 'auto', marginRight: 'auto' }}>
+					<form onSubmit={this.addContact}>
+						<fieldset>
+							<TextField name='nickname' label='Nome' value={this.state.fullname} style={styles.fields} fullWidth />
+							<Button type="submit" variant="raised" color="primary" fullWidth>Enviar</Button>
+						</fieldset>
+					</form>
+				</Paper>
+			</div>
 			</div>
 		)
 	}
