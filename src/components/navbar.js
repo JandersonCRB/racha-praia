@@ -7,7 +7,8 @@ import Toolbar from 'material-ui/Toolbar';
 import Drawer from 'material-ui/Drawer';
 import MenuIcon from 'material-ui-icons/Menu';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import DraftsIcon from 'material-ui-icons/Drafts';
+import { browserHistory, Link } from 'react-router';
+import PersonAddIcon from 'material-ui-icons/PersonAdd';
 
 class MyNavbar extends React.Component {
 	constructor() {
@@ -17,33 +18,32 @@ class MyNavbar extends React.Component {
 		}
 	}
 	render() {
-		console.log(this.state);
 		return (
 			<React.Fragment>
 				<AppBar position="static">
 					<Toolbar>
-						<IconButton color="secondary" style={{ marginLeft: -12, marginRight: 20 }} aria-label="Menu" onClick={() => this.setState({drawer: true})}>
+						<IconButton color="secondary" style={{ marginLeft: -12, marginRight: 20 }} aria-label="Menu" onClick={() => this.setState({ drawer: true })}>
 							<MenuIcon />
 						</IconButton>
-						<h1>
-							Title
-					</h1>
+						<Button color="secondary" onClick={() => browserHistory.push('/')}>
+							<h3 style={{marginTop: 'auto', marginBottom: 'auto'}}>Racha</h3>
+						</Button>
 						<Button style={{ marginLeft: 'auto' }} color="secondary">Login</Button>
 					</Toolbar>
 				</AppBar>
-				<Drawer open={this.state.drawer} onClose={() => this.setState({drawer: false})}>
+				<Drawer open={this.state.drawer} onClose={() => this.setState({ drawer: false })}>
 					<div
 						tabIndex={0}
 						role="button"
-					onClick={() => this.setState({drawer: false})}
-					onKeyDown={() => this.setState({drawer: false})}
+						onClick={() => this.setState({ drawer: false })}
+						onKeyDown={() => this.setState({ drawer: false })}
 					>
 						<List>
-							<ListItem button>
+							<ListItem button onClick={() => browserHistory.push('/players/new')}>
 								<ListItemIcon>
-									<DraftsIcon />
+									<PersonAddIcon />
 								</ListItemIcon>
-								<ListItemText primary="Drafts" />
+								<ListItemText primary="Adicionar Jogador" />
 							</ListItem>
 						</List>
 					</div>
