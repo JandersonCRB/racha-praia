@@ -29,20 +29,18 @@ class New extends Component {
 	handleChange = event => {
 		let { value } = event.target;
 		console.log(value);
-		this.setState({ current_select: value });
+		this.setState({ current_select: {nickname: value.nickname || '', id: value.id} });
 		console.log(this.state);
-		this.forceUpdate();
 	};
 
 	renderTeam = (id) => {
 		if (id === 'a') {
 			let { team_a } = this.state;
-			console.log([...team_a]);
-			console.log(team_a);
+			// console.log([...team_a]);
+			// console.log(team_a);
 			return (
 				[...team_a.values()].map((player, key) => (
 					<div key={player.id}>
-						{console.log(player.id)}
 						<span>{player.nickname}</span>
 					</div>
 				))
@@ -66,6 +64,7 @@ class New extends Component {
 
 	render() {
 		const players = this.props.players.all.slice();
+		const select = String(this.state.current_select.nickname);
 		return (
 			<div className="container">
 				<div className="row">
@@ -73,19 +72,18 @@ class New extends Component {
 						<Paper className="mt-4" style={{ padding: 10 }}>
 							<div className="ml-auto mr-auto">
 								<h2>Time A</h2>
+								{console.log(select)}
 								<Select
-									value={this.state.current_select.nickname}
+									value={select}
 									onChange={this.handleChange}
 									style={{ minWidth: 120 }}
-									inputProps={{
-										name: 'current_select',
-										id: 'player',
-									}}>
-									{players.slice().map(player => {
-										return (
-											<MenuItem key={player.id} value={player}>{player.nickname}</MenuItem>
-										)
-									})}
+								>
+										<MenuItem value="">Escolha um Jogador</MenuItem>}
+										{players.slice().map(player => {
+											return (
+												<MenuItem key={player.id} value={player}>{player.nickname}</MenuItem>
+											)
+										})}
 								</Select>
 								<Tooltip
 									title="Adicionar"

@@ -32,7 +32,7 @@
     "history": "^1.17.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "material-ui": "^1.0.0-beta.36",
+    "material-ui": "^1.0.0-beta.37",
     "material-ui-icons": "^1.0.0-beta.17",
     "mobx": "^3.4.1",
     "mobx-react": "^4.3.5",
