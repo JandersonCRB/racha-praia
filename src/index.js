@@ -13,6 +13,7 @@ import stores from './stores';
 import { Provider } from 'mobx-react';
 
 import routes from './routes';
+import { api } from 'fronto-api';
 
 const theme = createMuiTheme({
     palette: {
@@ -29,9 +30,21 @@ const theme = createMuiTheme({
     },
 });
 
+const endpoint = api({
+    endpoint: 'http://localhost:3000/',
+    header: (h) => {
+        h.append('Content-Type', 'application/json');
+        h.append('Authorization', localStorage.getItem('token'));
+    }
+});
+
+const models = {
+    match: new stores.Match(endpoint),
+    player: new stores.Player(endpoint),
+}
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>
-        <Provider {...stores}>
+        <Provider {...stores} {...models}>
             <Router routes={routes} history={browserHistory} />
         </Provider>
     </MuiThemeProvider>
