@@ -5,9 +5,13 @@ class Player extends Connect {
     namespace = 'v1';
     resource = 'players';
 
-    load(callback = {}){
+    load(callback = {}) {
         let path = this.api.endpoint + [this.namespace, this.resource].join('/');
-        this.get({path,callback});
+        this.get({ path, callback });
+    }
+    add(data, callback = {}) {
+        let path = this.api.endpoint + [this.namespace, this.resource].join('/');
+        this.post({ path, callback, data });
     }
 }
 

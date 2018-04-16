@@ -8,6 +8,12 @@ import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import ClearIcon from 'material-ui-icons/Clear';
 
+import { DatePicker } from 'material-ui-pickers';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+import MomentUtils from 'material-ui-pickers/utils/moment-utils';
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+
 import { inject, observer } from 'mobx-react';
 
 
@@ -20,6 +26,7 @@ class New extends Component {
 			players: [],
 			team: 0,
 			teams: [[], []],
+			date: new Date(),
 			search: ''
 		}
 	}
@@ -66,7 +73,7 @@ class New extends Component {
 	renderTeam(index) {
 		return (
 			<Paper elevation={4} style={{ padding: '10px' }}>
-				<h3>Time {index+1}</h3>
+				<h3>Time {index + 1}</h3>
 				<ul>
 					{this.state.teams[index].map((player) => {
 						return (
@@ -95,6 +102,18 @@ class New extends Component {
 		})
 		return (
 			<React.Fragment>
+				<MuiPickersUtilsProvider
+					utils={MomentUtils}
+					moment={moment}
+					locale="pt-br"
+				>
+					<DatePicker
+						label="Data do racha"
+						value={this.state.date}
+						onChange={(date) => this.setState({ date })}
+						animateYearScrolling={false}
+					/>
+				</MuiPickersUtilsProvider>
 				<Paper elevation={4} style={{ padding: '10px', paddingTop: '5px', margin: '2px 2px 15px 2px' }}>
 					<TextField fullWidth label="Buscar" onChange={(e) => this.change(e)} value={this.state.search} />
 				</Paper>
@@ -127,9 +146,9 @@ class New extends Component {
 							);
 						})}
 					</div>
-					<Button fullWidth variant="raised" color="primary" style={{marginBottom: '10px', marginTop: '10px'}}>
+					<Button fullWidth variant="raised" color="primary" style={{ marginBottom: '10px', marginTop: '10px' }}>
 						Salvar
-						</Button>
+					</Button>
 				</div>
 			</React.Fragment>
 		);

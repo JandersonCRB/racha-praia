@@ -1,4 +1,4 @@
-import Home from './Home/Home';
+import Home from './Home/Home.jsx';
 import NewMatch from './Match/New/New.jsx';
 import NewPlayer from './Player/NewPlayer';
 import Layout from './Layout';

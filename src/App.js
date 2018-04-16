@@ -8,13 +8,13 @@ import { Provider } from 'mobx-react';
 
 
 class App extends Component {
-  render() {
-    return (
-      <Provider players={stores.players}>
-        <Routes />
-      </Provider>
-    )
-  }
+	render() {
+		return (
+			<Provider players={stores.players}>
+				<Routes />
+			</Provider>
+		)
+	}
 }
 
 export default App;

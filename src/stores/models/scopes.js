@@ -101,7 +101,7 @@ const api = {
 		this.setIsLoading(true);
 		return request('GET', path, { defaultCallback, userCallback: callback });
 	},
-	post(path, data = {}, userCallback = {}, file = false) {
+	post({ path, data = {}, userCallback = {}, file = false } = {}) {
 		const defaultCallback = {
 			default: () => this.setIsLoading(false)
 		}
