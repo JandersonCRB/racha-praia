@@ -18,7 +18,7 @@ import { inject, observer } from 'mobx-react';
 
 
 @inject('player')
-@inject('Match') @observer
+@inject('match') @observer
 class New extends Component {
 	constructor() {
 		super();
@@ -26,7 +26,7 @@ class New extends Component {
 			players: [],
 			team: 0,
 			teams: [[], []],
-			date: new Date(),
+			date: moment(),
 			search: ''
 		}
 	}
@@ -41,6 +41,37 @@ class New extends Component {
 		}
 		);
 	}
+
+	submit() {
+		const { match } = this.props;
+		var teams = this.state.teams;
+		teams = teams.map((team) => {
+			return {
+				player_ids: team.map((player) => {
+					return player.id;
+				})
+			}
+		})
+		const data = {
+			match: {
+				date: this.state.date.format("YYYY-MM-DD"),
+				teams
+			}
+		}
+		match.add({
+			data, callback: {
+				201: (body) => {
+					alert("Adicionado");
+				},
+				422: (body) => {
+					body.map((error) => {
+						alert(error);
+					})
+				}
+			}
+		});
+	}
+
 	styles = {
 		card: {
 			maxWidth: 345,
@@ -102,6 +133,12 @@ class New extends Component {
 		})
 		return (
 			<React.Fragment>
+				<AppBar position="static" color="default" style={{ marginBottom: '5px' }}>
+					<Tabs value={team} indicatorColor="primary" textColor="primary" fullWidth onChange={(e, v) => this.changeTab(e, v)} style={{ marginTop: '20px' }}>
+						<Tab label="Time 1" />
+						<Tab label="Time 2" />
+					</Tabs>
+				</AppBar>
 				<MuiPickersUtilsProvider
 					utils={MomentUtils}
 					moment={moment}
@@ -117,12 +154,7 @@ class New extends Component {
 				<Paper elevation={4} style={{ padding: '10px', paddingTop: '5px', margin: '2px 2px 15px 2px' }}>
 					<TextField fullWidth label="Buscar" onChange={(e) => this.change(e)} value={this.state.search} />
 				</Paper>
-				<AppBar position="static" color="default" style={{ marginBottom: '5px' }}>
-					<Tabs value={team} indicatorColor="primary" textColor="primary" fullWidth onChange={(e, v) => this.changeTab(e, v)} style={{ marginTop: '20px' }}>
-						<Tab label="Time 1" />
-						<Tab label="Time 2" />
-					</Tabs>
-				</AppBar>
+
 				<div className="container">
 					{this.renderTeam(team)}
 					<hr />
@@ -146,7 +178,7 @@ class New extends Component {
 							);
 						})}
 					</div>
-					<Button fullWidth variant="raised" color="primary" style={{ marginBottom: '10px', marginTop: '10px' }}>
+					<Button onClick={() => this.submit()} fullWidth variant="raised" color="primary" style={{ marginBottom: '10px', marginTop: '10px' }}>
 						Salvar
 					</Button>
 				</div>
