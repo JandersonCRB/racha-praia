@@ -27,6 +27,13 @@ export default class NewPlayer extends React.Component {
 
 		this.props.player.add({
 			name: this.state.name,
+		}, {
+			201: () => {
+				alert('Jogador criado com sucesso');
+			},
+			default: () => {
+				alert('Ocorreu um erro ao adicionar o jogador');
+			}
 		});
 	}
 	render() {

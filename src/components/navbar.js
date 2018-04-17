@@ -29,6 +29,11 @@ class MyNavbar extends React.Component {
 			onClick: () => browserHistory.push('/matches/new'),
 			primary: "Adicionar partida",
 			icon: <EventAvailableIcon />
+		},
+		{
+			onClick: () => browserHistory.push('/matches'),
+			primary: "Partidas",
+			icon: <EventAvailableIcon />
 		}
 	]
 

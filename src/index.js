@@ -31,7 +31,7 @@ const theme = createMuiTheme({
 });
 
 const endpoint = api({
-    endpoint: 'http://localhost:3000/',
+    endpoint: (process.env.NODE_ENV === "production" ? 'https://safe-caverns-23363.herokuapp.com/' : 'http://localhost:3000/'),
     header: (h) => {
         h.append('Content-Type', 'application/json');
         h.append('Authorization', localStorage.getItem('token'));

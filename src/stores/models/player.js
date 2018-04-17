@@ -11,7 +11,7 @@ class Player extends Connect {
     }
     add(data, callback = {}) {
         let path = this.api.endpoint + [this.namespace, this.resource].join('/');
-        this.post({ path, callback, data });
+        this.post({ path, userCallback: callback, data });
     }
 }
 
