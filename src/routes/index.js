@@ -21,7 +21,9 @@ const routes =
             <Route path='new' component={c.NewPlayer} />
         </Route>
         <Route path='matches'>
+            <IndexRoute component={c.MatchesCollection} />
             <Route path='new' component={c.NewMatch} />
+            <Route path=':matchId' component={c.ShowMatch} />
         </Route>
         <Route path='*' component={Page404} />
     </Route>;
